@@ -18,16 +18,17 @@ It acts like a fitness tracker for software, tracking requests, CPU usage, memor
 
 ```
 ## Setup Instructions
-1. Clone the repository.
+### 1. Clone the repository.
+
 Get the project files onto your machine:
 
 ```bash
   git clone https://github.com/Decnj/nodejsApp-monitoring.git
-  cd nodejs-dashboard
+  cd nodejsApp-monitoring
 ```
 
 
-2. Build and Start Services.
+### 2. Build and Start Services.
 Use Docker Compose to spin up Node.js, Prometheus, and Grafana:
 
 ```bash
@@ -36,7 +37,7 @@ Use Docker Compose to spin up Node.js, Prometheus, and Grafana:
 Wait for the containers to start.
 
 
-3. Access the services.
+### 3. Access the services.
 Open each service in your browser:
 
 - Node.js app → http://localhost:3000 
@@ -44,21 +45,25 @@ Open each service in your browser:
 - Grafana → http://localhost:3001
 
 
-4. Log into Grafana
+### 4. Log into Grafana
 Use default credentials to access Grafana:
 - Username: admin
 - Password: admin
 Change password after first login
 
 
-5. Create Dashboard Panels
+### 5. Create Dashboard Panels
 Add the panels for each metric:
 - Line chart: rate(http_requests_total[1m])
+
 - Circular gauge: CPU % (rate(process_cpu_user_seconds_total[1m])*100)
+
 - Circular gauge: Memory MB (process_resident_memory_bytes/1024/1024)
+
 - Time series: Event loop lag (nodejs_eventloop_lag_seconds)
 
-6. Dashboard Screenshots
+
+### 6. Dashboard Screenshots
 Below are the key panels from the Grafana dashboard, each showing a different aspect of the Node.js app health:
 
 - Request Rate: Line chart showing the rate of incoming HTTP requests over time.
@@ -69,4 +74,4 @@ Below are the key panels from the Grafana dashboard, each showing a different as
 
 - Event Loop Lag: Time series graph showing Node.js event loop lag in seconds, highlighting responsiveness issues.
 
-![Request Rate](screenshots/request-rate.png)
+![Monitored Metrics](screenshots/Grafana.png)
